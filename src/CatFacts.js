@@ -5,7 +5,9 @@ export default function CatFacts(props) {
     return(
         <div id="catFacts">
             <h2>Today's Cat Facts</h2>
-            <p>{catFacts}</p>
+            {catFacts.map(fact => {
+                return <p>{fact}</p>
+            })}
             <button onClick={onClick}>Get another Cat Fact</button>
         </div>
     )

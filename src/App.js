@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 import { connect } from 'react-redux'
@@ -7,7 +7,11 @@ import { getCatFact } from './reducer'
 import CatFacts from './CatFacts';
 
 function App(props) {
-  const { catFacts } = props
+  const { catFacts, getCatFact } = props
+
+  useEffect(() => {
+    getCatFact()
+  }, [])
 
   const onClick = () => {
     console.log('click')
@@ -32,4 +36,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, getCatFact)(App);
+const mapActionsToProps = () => {
+  return {
+    getCatFact
+  }
+}
+
+export default connect(mapStateToProps, mapActionsToProps())(App);

@@ -4,7 +4,6 @@ import axios from 'axios'
 export const ADD_NEW_CATFACT = 'ADD_NEW_CATFACT'
 
 export const getCatFact = () => dispatch => {
-    debugger
     axios.get('https://catfact.ninja/fact')
         .then(res => {
             console.log(res.data.fact)
@@ -15,7 +14,7 @@ export const getCatFact = () => dispatch => {
         })
 }
 
-const initialFacts = ''
+const initialFacts = []
 function catFacts(state = initialFacts, action) {
     switch (action.type) {
         case ADD_NEW_CATFACT:
